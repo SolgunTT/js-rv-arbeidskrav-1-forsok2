@@ -1,10 +1,10 @@
 import React from "react";
 
-const Inputfield = () => {
+const Inputfield = ( { inputValue, onChange } ) => {
 
     return (
 
-        <input></input>
+        <input value={inputValue} onChange={onChange} />
     )
 }
 

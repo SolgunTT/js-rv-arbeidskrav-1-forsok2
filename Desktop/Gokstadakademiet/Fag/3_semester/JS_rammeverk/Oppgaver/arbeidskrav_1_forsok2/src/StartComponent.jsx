@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import Inputfield from "./Inputfield";
+import "./App.css";
+import GameComponent from "./GameComponent";
 
 const StartComponent = () => {
   const [inputValue, setInputValue] = useState("");
@@ -12,7 +14,7 @@ const inputChange = (event) => {
 };
 
 const ClickBtn = () => {
-  setBtnClick = true;
+  setBtnClick(true);
 };
 
 return (
@@ -21,7 +23,7 @@ return (
       <GameComponent inputValue={inputValue}/>
     ) : (
       <div className="start-div">
-        <Inputfield />
+        <Inputfield onChange={inputChange}/>
         <Button ClickBtn={ClickBtn}/>
       </div>
     )}
