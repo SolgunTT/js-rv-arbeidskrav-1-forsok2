@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Inputfield from "./Inputfield";
+import GameComponent from "./GameComponent";
 
 
 // Countdown-before-game-functionality:
@@ -29,7 +29,7 @@ return () => {
 return (
     <div>
       {isPreGameCountDone ? (
-        <Inputfield />
+        <GameComponent />
       ) : (
         <>
         

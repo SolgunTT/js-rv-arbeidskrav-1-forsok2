@@ -10,7 +10,7 @@ const StartComponent = () => {
 
 
 const inputChange = (event) => {
-  setInputValue(event.target.value);
+  setInputValue(event.target.value)
 };
 
 const ClickBtn = () => {
