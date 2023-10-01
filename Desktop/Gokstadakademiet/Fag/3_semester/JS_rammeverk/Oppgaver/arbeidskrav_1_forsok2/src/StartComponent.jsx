@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import Inputfield from "./Inputfield";
 import "./App.css";
-import GameComponent from "./GameComponent";
+import PreGameComponent from "./PreGameComponent";
 
 const StartComponent = () => {
   const [inputValue, setInputValue] = useState("");
@@ -20,7 +20,7 @@ const ClickBtn = () => {
 return (
   <div>
     {BtnClick ? (
-      <GameComponent inputValue={inputValue}/>
+      <PreGameComponent inputValue={inputValue}/>
     ) : (
       <div className="start-div">
         <Inputfield onChange={inputChange}/>

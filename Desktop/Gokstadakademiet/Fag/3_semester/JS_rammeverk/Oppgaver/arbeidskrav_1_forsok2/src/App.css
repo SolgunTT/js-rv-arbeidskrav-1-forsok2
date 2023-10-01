@@ -28,8 +28,16 @@ input {
 
 .good-luck-p {
 
-    width: 50vw;
+    width: 40vw;
     margin-left: auto;
     margin-right: auto;
     font-size: 5vw;
+}
+
+.pre-game-countdown-p {
+    font-size: 20vh;
+    font-weight: bolder;
+   width: 10vw;
+    margin-left: auto;
+    margin-right: auto;
 }
