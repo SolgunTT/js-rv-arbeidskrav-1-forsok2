@@ -53,4 +53,5 @@ const inputChange = (event) => {
 };
 
 export default GameComponent;
+c
 
