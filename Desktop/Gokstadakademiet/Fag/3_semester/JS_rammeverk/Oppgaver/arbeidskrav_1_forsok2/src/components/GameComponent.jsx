@@ -10,18 +10,22 @@ const GameComponent = () => {
 
 
   const handleKeyPress = (event) => {
-    if (event.keyCode === 32) {
+    if (event.key === " ") {
+      console.log('fff')
       // Spacebar pressed, move to the next word
       setCurrentWordIndex((prevIndex) =>
         prevIndex < words.length - 1 ? prevIndex + 1 : 0
       );
     }
+   
   };
 
 
   // const inputChange = (event) => {
   //   setInputValue(event.target.value);
   // };
+
+
 
   const words = høstData.ord;
 
