@@ -1,6 +1,7 @@
 import React from "react";
-import StartComponent from "./StartComponent";
-import "./App.css";
+import StartComponent from "./components/StartComponent";
+
+import "./components/App.css";
 
 
 function App() {
