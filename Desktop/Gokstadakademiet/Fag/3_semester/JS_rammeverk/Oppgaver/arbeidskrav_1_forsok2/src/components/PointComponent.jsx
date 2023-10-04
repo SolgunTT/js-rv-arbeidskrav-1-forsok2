@@ -1,10 +1,10 @@
 import React from "react";
 
-const PointComponent = ( { inputValue }) => {
+const PointComponent = ( { score }) => {
 
 return (
 
-    <p>{inputValue}</p>
+    <p>{score}</p>
 )
 
 

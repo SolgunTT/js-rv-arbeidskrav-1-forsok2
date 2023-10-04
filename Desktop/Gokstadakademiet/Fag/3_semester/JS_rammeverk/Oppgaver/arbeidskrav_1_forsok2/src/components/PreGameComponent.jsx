@@ -5,7 +5,7 @@ import GameComponent from "./GameComponent";
 
 // Countdown-before-game-functionality:
 const PreGameComponent = ({ inputValue }) => {
-  const [preGameCount, setPreGameCount] = useState("3");
+  const [preGameCount, setPreGameCount] = useState("1");
   const [isPreGameCountDone, setIsPreGameCountDone] = useState(false);
 
 useEffect(() => {
