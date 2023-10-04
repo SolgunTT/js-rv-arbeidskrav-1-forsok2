@@ -1,56 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CountdownComponent from "./CountdownComponent";
 import Inputfield from "./Inputfield";
 import ApiComponent from "./ApiComponent";
 import PointComponent from "./PointComponent"
-import høstData from "../Høst.json";
+import Høst from "../Høst.json";
 
-const GameComponent = () => {
+const GameComponent = ({ playerName }) => {
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = Høst.ord;
+  const currentWord = words[wordIndex];
   const [inputValue, setInputValue] = useState("");
-  const [points, setPoints] = useState(0);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [matchCount, setMatchCount] = useState(0);
+  const [totalMatchCount, setTotalMatchCount] = useState(0);
 
-  const words = høstData.ord;
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === " ") {
+        e.preventDefault();
+        if (wordIndex < words.length) {
+          setWordIndex(wordIndex + 1);
+        }
+        setInputValue("");
+      }
+    };
 
+    document.addEventListener("keydown", handleKeyDown);
 
-  const handleKeyPress = (event) => {
-    if (event.key === " ") {
-      // Spacebar pressed, move to the next word
-      setCurrentWordIndex((prevIndex) =>
-        prevIndex < words.length - 1 ? prevIndex + 1 : 0
-      );
-    }
-   
-  };
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [wordIndex, words]);
 
-  const currentWord = words[currentWordIndex]; 
-
-const inputChange = (event) => {
-  const enteredText = event.target.value;
+  const handleInputChange = (e) => {
+    const enteredText = e.target.value;
     setInputValue(enteredText);
 
-    let points = 0;
-    for (let i = 0; i < enteredText.length; i++) {
-      if (enteredText[i] === currentWord[i]) {
-        points++;
-      }
 
-      setPoints(points); 
-
-};
+    if (enteredText === currentWord.substring(0, enteredText.length)) {
+      setMatchCount(enteredText.length);
+      setTotalMatchCount(totalMatchCount + 1);
+    }
+  };
 
 
 
   return (
     <div>
       <CountdownComponent />
-      <Inputfield onSpacebarClick={handleKeyPress} />
-      <PointComponent value={points} />
-    <ApiComponent currentWordIndex={currentWordIndex} />
+      <Inputfield onSpacebarClick={handleInputChange} value={inputValue}/>
+      <PointComponent totalMatchCount={totalMatchCount}/>
+    <ApiComponent wordIndex={wordIndex} />
     </div>
   );
 }
-};
+;
 
 export default GameComponent;
 
