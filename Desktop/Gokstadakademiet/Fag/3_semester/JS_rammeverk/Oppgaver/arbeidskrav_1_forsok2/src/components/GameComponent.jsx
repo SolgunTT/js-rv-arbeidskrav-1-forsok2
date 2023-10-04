@@ -13,14 +13,17 @@ const GameComponent = ({ playerName }) => {
   const [score, setScore] = useState(0);
   const [consecutiveCorrectWords, setConsecutiveCorrectWords] = useState(0);
 
+  
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === " ") {
         e.preventDefault();
         if (wordIndex < words.length) {
           setWordIndex(wordIndex + 1);
+          setInputValue("");
         }
-        setInputValue("");
+        
       }
     };
 
@@ -29,7 +32,7 @@ const GameComponent = ({ playerName }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [wordIndex, words]);
+  }, [ wordIndex, words ]);
 
   const handleInputChange = (e) => {
     const enteredText = e.target.value;
@@ -54,14 +57,14 @@ const GameComponent = ({ playerName }) => {
 
     if (consecutiveCorrectWords === 2) {
       setScore((prevScore) => prevScore + 100);
-      setConsecutiveCorrectWords(0);
+      setConsecutiveCorrectWords(0);q
     }
   };
 
   return (
     <div>
       <CountdownComponent />
-      <Inputfield onSpacebarClick={handleKeyDown} value={inputValue} />
+      <Inputfield onSpacebarClick={handleKeyDown} value={inputValue} onChange={handleInputChange}/>
       <PointComponent score={score} />
       <ApiComponent wordIndex={wordIndex} />
     </div>
